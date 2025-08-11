@@ -24,9 +24,6 @@ public class OperationRoomService {
         operationRooms.add(new OperationRoom(5L, "Five", List.of(MRI, ECG)));
     }
 
-
-
-
     /**
      * Find the room by id (from hardcoded data)
      * @param roomId - room id
