@@ -8,9 +8,9 @@ public class Doctor {
     private String name;
     private SurgeryType surgeryType;
 
-    public Doctor(String name, Long id, SurgeryType surgeryType) {
-        this.name = name;
+    public Doctor(Long id, String name, SurgeryType surgeryType) {
         this.id = id;
+        this.name = name;
         this.surgeryType = surgeryType;
     }
 
