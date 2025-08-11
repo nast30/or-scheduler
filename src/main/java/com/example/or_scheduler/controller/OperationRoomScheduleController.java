@@ -19,6 +19,12 @@ public class OperationRoomScheduleController {
         this.doctorService = doctorService;
     }
 
+    /**
+     * API call to get the next available booking for an OR.
+     * @param id the id of the doctor
+     *
+     * @return If there's room with availability it will return the room number and the time. If not you will get your place in queue
+     */
     @GetMapping("/doctor/{id}/get")
     public synchronized ResponseEntity<ScheduleResponse> getNextScheduleSlot(@PathVariable Long id) {
             return new ResponseEntity<>(doctorService.requestRoom(id), HttpStatus.OK);
