@@ -39,4 +39,13 @@ public class OperationRoom {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "OperationRoom{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", machinesList=" + machinesList +
+                '}';
+    }
 }

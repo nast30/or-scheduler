@@ -50,4 +50,14 @@ public class Booking {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "roomId=" + roomId +
+                ", start=" + start +
+                ", end=" + end +
+                ", doctor=" + doctor +
+                '}';
+    }
 }

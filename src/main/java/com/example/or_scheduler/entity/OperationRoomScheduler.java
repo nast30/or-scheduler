@@ -43,4 +43,13 @@ public class OperationRoomScheduler {
     public void setQueue(Deque<PendingBooking> queue) {
         this.queue = queue;
     }
+
+    @Override
+    public String toString() {
+        return "OperationRoomScheduler{" +
+                "rooms=" + rooms +
+                ", schedule=" + schedule +
+                ", queue=" + queue +
+                '}';
+    }
 }

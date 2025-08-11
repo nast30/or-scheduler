@@ -37,4 +37,13 @@ public class Doctor {
     public void setSurgeryType(SurgeryType surgeryType) {
         this.surgeryType = surgeryType;
     }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surgeryType=" + surgeryType +
+                '}';
+    }
 }

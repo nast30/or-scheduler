@@ -29,4 +29,12 @@ public class PendingBooking {
     public void setRequestTime(LocalDateTime requestTime) {
         this.requestTime = requestTime;
     }
+
+    @Override
+    public String toString() {
+        return "PendingBooking{" +
+                "doctor=" + doctor +
+                ", requestTime=" + requestTime +
+                '}';
+    }
 }
