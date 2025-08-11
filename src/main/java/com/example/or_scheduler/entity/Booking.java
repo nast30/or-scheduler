@@ -3,27 +3,27 @@ package com.example.or_scheduler.entity;
 import java.time.LocalDateTime;
 
 /**
- * A booked operation room will be saved as a SlotBooking
+ * A booked operation room will be saved as a Booking
  */
-public class SlotBooking {
+public class Booking {
 
-    public int roomId;
+    public long roomId;
     public LocalDateTime start;
     public LocalDateTime end;
     public Doctor doctor;
 
-    public SlotBooking(int roomId, LocalDateTime start, LocalDateTime end, Doctor doctor) {
+    public Booking(long roomId, LocalDateTime start, LocalDateTime end, Doctor doctor) {
         this.roomId = roomId;
         this.start = start;
         this.end = end;
         this.doctor = doctor;
     }
 
-    public int getRoomId() {
+    public long getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(long roomId) {
         this.roomId = roomId;
     }
 

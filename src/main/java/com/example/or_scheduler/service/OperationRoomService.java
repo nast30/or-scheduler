@@ -1,11 +1,12 @@
 package com.example.or_scheduler.service;
 
+import com.example.or_scheduler.entity.Doctor;
 import com.example.or_scheduler.entity.OperationRoom;
+import com.example.or_scheduler.entity.OperationRoomScheduler;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static com.example.or_scheduler.enums.Machines.*;
 
@@ -26,5 +27,15 @@ public class OperationRoomService {
 
 
 
-
+    /**
+     * Find the room by id (from hardcoded data)
+     * @param roomId - room id
+     * @return room object
+     */
+    public OperationRoom findById(Long roomId) {
+        final Optional<OperationRoom> foundDoctor = operationRooms.stream()
+                .filter(room -> Objects.equals(room.getId(), roomId))
+                .findAny();
+        return foundDoctor.orElseThrow(() -> new NoSuchElementException("Doctor with ID: " + roomId + " not found."));
+    }
 }
