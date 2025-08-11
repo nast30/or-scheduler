@@ -35,7 +35,7 @@ public class DoctorService {
      * Doctor is making a request for a room.
      *
      * @param doctorId
-     * @return The respose is the room ID and the start time of his operation
+     * @return The response is the room ID and the start time of his operation
      */
     public synchronized ScheduleResponse requestRoom(Long doctorId) {
         final Doctor doctor = findById(doctorId);
