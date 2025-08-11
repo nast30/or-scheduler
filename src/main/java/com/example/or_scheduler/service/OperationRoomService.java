@@ -1,8 +1,6 @@
 package com.example.or_scheduler.service;
 
-import com.example.or_scheduler.entity.Doctor;
 import com.example.or_scheduler.entity.OperationRoom;
-import com.example.or_scheduler.entity.OperationRoomScheduler;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 

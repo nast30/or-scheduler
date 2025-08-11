@@ -1,6 +1,7 @@
 package com.example.or_scheduler.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * The response that is returned once a decision was made to book a room or to queue the request
@@ -48,5 +49,15 @@ public class ScheduleResponse {
 
     public void setQueuePosition(Integer queuePosition) {
         this.queuePosition = queuePosition;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        if (roomId != null) {
+            return String.format("BOOKED -> room=%d, start=%s", roomId, startTime.format(f));
+        } else {
+            return String.format("QUEUED -> position=%d", queuePosition);
+        }
     }
 }

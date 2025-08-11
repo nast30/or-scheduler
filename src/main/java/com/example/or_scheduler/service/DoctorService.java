@@ -19,7 +19,6 @@ public class DoctorService {
 
     private final OperationRoomSchedulerService operationRoomSchedulerService;
 
-    //TODO notice the permission here
     public List<Doctor> doctors = new ArrayList<>();
 
     @PostConstruct
@@ -33,25 +32,28 @@ public class DoctorService {
     }
 
     /**
-     * Doctor is making a request for a room
+     * Doctor is making a request for a room.
+     *
      * @param doctorId
-     * @return
+     * @return The respose is the room ID and the start time of his operation
      */
     public synchronized ScheduleResponse requestRoom(Long doctorId) {
         final Doctor doctor = findById(doctorId);
+        LOGGER.info("Found doctor with id {}", doctor.getId());
         // try to find a slot in the next 7 days
         Optional<Map.Entry<Long, LocalDateTime>> optSlot = operationRoomSchedulerService.findTimeByDoctor(doctor);
         if (optSlot.isPresent()) {
             long roomId = optSlot.get().getKey();
             final LocalDateTime start = optSlot.get().getValue();
             operationRoomSchedulerService.bookRoom(roomId, start, doctor);
-            // TODO after booking, try to allocate queued requests (lazy dequeue)
             operationRoomSchedulerService.processQueue();
+            operationRoomSchedulerService.printSchedule();
             return ScheduleResponse.booked(roomId, start);
         } else {
             // queue the request
             Deque<PendingBooking> queue = operationRoomSchedulerService.getQueueFromScheduler();
             queue.addLast(new PendingBooking(doctor, LocalDateTime.now()));
+            operationRoomSchedulerService.printSchedule();
             return ScheduleResponse.queued(queue.size());
         }
     }
